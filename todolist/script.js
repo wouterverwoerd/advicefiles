@@ -8,6 +8,7 @@ let count;
 //Function on window load
 window.onload = () => {
   updateNote = "";
+  newTaskInput.value = "x";
   count = Object.keys(localStorage).length;
   displayTasks();
 };
