@@ -8,7 +8,18 @@ let count;
 //Function on window load
 window.onload = () => {
   updateNote = "";
-  newTaskInput.value = "x";
+  newTaskInput.value = "";
+  
+  // 1. Get the query string from the current URL
+const urlParams = new URLSearchParams(window.location.search);
+
+// 2. Extract the specific parameter by its key name
+const todo = urlParams.get('todo');
+  
+  if (todo) {
+  document.getElementById('todoid').value = todo;
+}
+  
   count = Object.keys(localStorage).length;
   displayTasks();
 };
