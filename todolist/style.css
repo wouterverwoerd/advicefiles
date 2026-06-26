@@ -29,6 +29,9 @@
     display: grid;
     grid-template-columns: 9fr 3fr;
     gap: 1em;
+	display: inline-grid;
+	width: 100%;
+	
   }
   #new-task input {
     font-family: "Poppins", sans-serif;
@@ -53,6 +56,7 @@
     border: none;
     border-radius: 0.3em;
     cursor: pointer;
+	margin: 10px;
   }
   #tasks {
     background-color: #ffffff;
