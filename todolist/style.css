@@ -8,12 +8,12 @@
     background: linear-gradient(
         135deg,
         #ff8e44,
-        #f91362,
+        blue,
         #35126a
     );
   }
   .container {
-    width: 90%;
+    width: 95%;
     max-width: 34em;
     position: absolute;
     transform: translate(-50%, -50%);
