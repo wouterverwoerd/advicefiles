@@ -1,19 +1,165 @@
-<html><body>
-<img src='chart_0.jpg' >
-<img src='chart_1.jpg' >
-<img src='chart_2.jpg' >
-<img src='chart_3.jpg' >
-<img src='chart_4.jpg' >
-<img src='chart_5.jpg' >
-<img src='chart_6.jpg' >
-<img src='chart_7.jpg' >
-<img src='chart_8.jpg' >
-<img src='chart_9.jpg' >
-<img src='chart_10.jpg' >
-<img src='chart_11.jpg' >
-<img src='chart_12.jpg' >
-<img src='chart_13.jpg' >
-<img src='chart_14.jpg' >
-<img src='chart_15.jpg' >
-<img src='chart_16.jpg' >
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Sales Statistics Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --text-main: #334155;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        header p {
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem 4rem 1rem;
+        }
+
+        /* The Grid */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* The Cards */
+        .chart-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        .chart-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .chart-info {
+            padding: 1rem;
+            background: #fff;
+        }
+
+        .chart-label {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        /* Back to top button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            font-weight: bold;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Retail Sales Statistics Report</h1>
+    <p>Comprehensive data analysis across all sectors</p>
+</header>
+
+<div class="container">
+    <div class="chart-grid" id="gallery">
+        <!-- The images will be generated here by the script below -->
+    </div>
+</div>
+
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Top</button>
+
+<script>
+    const gallery = document.getElementById('gallery');
+    const totalCharts = 16; // Total number of charts
+
+    // Instead of writing 136 lines of HTML, this loop generates them for you
+    for (let i = 0; i <= totalCharts; i++) {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+        
+        card.innerHTML = `
+            <img src="chart_${i}.jpg" alt="Employment Chart ${i}" loading="lazy">
+            <div class="chart-info">
+                <span class="chart-label">Data Visualization #${i}</span>
+            </div>
+        `;
+        gallery.appendChild(card);
+    }
+
+    // Show/Hide back to top button
+    window.onscroll = function() {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("backToTop").style.display = "block";
+        } else {
+            document.getElementById("backToTop").style.display = "none";
+        }
+    };
+</script>
+
+</body>
+</html>
