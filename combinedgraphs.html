@@ -203,6 +203,24 @@
     </div>
 
     <!-- jobs  -->
+<h1>All jobs</h1>	
+	<div id="jobs-list"></div>
+	<script>
+	fetch("https://wouteradvicenode.onrender.com/jobs")
+	  .then(r => r.json())
+	  .then(jobs => {
+		document.getElementById("jobs-list").innerHTML = jobs.map(j => `
+		  <div class="job-card">
+			<h3>${j.jobTitle ?? "Untitled role"}</h3>
+			<p>${j.company ?? ""}${j.area ? " — " + j.area : ""}</p>
+			<p>${j.salary ?? ""} ${j.employmentType ? "· " + j.employmentType : ""}</p>
+			<ul>${(j.highlights ?? []).map(h => `<li>${h}</li>`).join("")}</ul>
+			<a href="${j.url ?? "#"}">View advert</a>
+		  </div>`).join("");
+	  })
+	  .catch(() => document.getElementById("jobs-list").textContent = "Failed to load jobs.");
+	</script>
+	
     <div class="market-card">
         <div style="height: 900px;">
             <div class="iframe-card">
